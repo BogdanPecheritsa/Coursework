@@ -56,13 +56,10 @@ namespace CALLОМОЙСЬКИЙ.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,PhoneNumber,FirstName,LastName,Password")] Users users)
         {
-            if (ModelState.IsValid)
-            {
-            return View(users);
-            }
                 _context.Add(users);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+                return View(users);
         }
 
         // GET: Users/Edit/5
